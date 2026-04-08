@@ -15,11 +15,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* === MONKEY VAPE CASE STUDY === */
+    /* === MONKEY VAPE CASE STUDY — Figma rebuild === */
 
     body {
       background: #161616;
-      color: #ffffff;
+      color: #f1f1f1;
     }
 
     /* --- HEADER override --- */
@@ -36,9 +36,8 @@
     /* --- HERO --- */
     .mv-hero {
       position: relative;
-      width: 100vw;
-      height: 100vh;
-      min-height: 700px;
+      width: 100%;
+      height: 899px;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -48,143 +47,212 @@
     .mv-hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('assets/project-allowa-bg.jpg');
+      background-image: url('assets/mv-hero.jpg');
       background-size: cover;
-      background-position: center top;
-      transform: scale(1.08);
-      animation: mvHeroZoom 2s ease-out forwards;
+      background-position: center;
+      transform: scale(1.05);
+      animation: mvHeroZoom 1.6s ease-out forwards;
       will-change: transform;
     }
 
     @keyframes mvHeroZoom {
-      from { transform: scale(1.08); }
+      from { transform: scale(1.05); }
       to { transform: scale(1.0); }
     }
 
     .mv-hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 100%);
+      background: rgba(0, 0, 0, 0.4);
       pointer-events: none;
     }
 
     .mv-hero-logo {
       position: relative;
       z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
       width: 200px;
-      height: 200px;
+      height: auto;
       opacity: 0;
       animation: mvLogoIn 1s ease-out 0.4s forwards;
     }
 
     @keyframes mvLogoIn {
-      from { opacity: 0; transform: scale(0.9); }
+      from { opacity: 0; transform: scale(0.92); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    .mv-hero-logo span {
+    /* Hero bottom bar */
+    .mv-hero-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      padding: 20px 64px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 60px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1;
-      letter-spacing: 2px;
+      border-top: 1px solid rgba(241, 241, 241, 0.15);
     }
 
-    /* --- PROJECT INFO --- */
-    .project-info {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 80px var(--side-padding);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .mv-hero-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mv-hero-bar-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .mv-hero-bar-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #f1f1f1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* --- MAIN CONTENT WRAPPER --- */
+    .mv-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      padding-top: 60px;
+    }
+
+    /* --- TITLE + INFO SECTION --- */
+    .mv-info {
+      width: 1152px;
+      max-width: calc(100% - 128px);
+      display: flex;
+      justify-content: space-between;
       gap: 60px;
     }
 
-    .project-info-left {
+    .mv-info-left {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
+      max-width: 600px;
     }
 
-    .project-info-label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .project-info-title {
+    .mv-info-title {
       font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      font-weight: 400;
       font-style: italic;
-      color: #ffffff;
-      line-height: 1.1;
+      font-size: 43px;
+      font-weight: 300;
+      color: #f1f1f1;
+      line-height: 1.15;
     }
 
-    .project-info-date {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--grey);
-      margin-top: 4px;
-    }
-
-    .project-info-desc {
-      font-family: var(--font-sans);
-      font-size: 16px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
-      max-width: 440px;
-      margin-top: 8px;
-    }
-
-    .project-info-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-start;
-      gap: 10px;
-      padding-top: 4px;
-    }
-
-    .project-meta-item {
+    .mv-info-credits {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       font-weight: 500;
-      color: var(--grey);
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .mv-info-credits:hover {
+      color: #f1f1f1;
+    }
+
+    .mv-info-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(241, 241, 241, 0.6);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .mv-info-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      padding-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .mv-info-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       text-align: right;
     }
 
+    .mv-info-meta strong {
+      color: #f1f1f1;
+      font-weight: 500;
+    }
+
     /* --- GALLERY --- */
-    .gallery {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--side-padding);
+    .mv-gallery {
+      width: 1384px;
+      max-width: calc(100% - 128px);
       display: flex;
       flex-direction: column;
-      gap: var(--gap);
+      gap: 10px;
     }
 
-    .gallery-row {
+    /* Row 1: Text + Image side by side */
+    .mv-row-mission {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
       width: 100%;
-      overflow: hidden;
-      border-radius: var(--radius);
     }
 
-    .gallery-row img {
+    .mv-mission-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      padding: 50px 40px;
+      background: #1c1c1c;
+      border-radius: 5px;
+    }
+
+    .mv-mission-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(241, 241, 241, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .mv-mission-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(241, 241, 241, 0.6);
+      line-height: 1.7;
+      max-width: 455px;
+    }
+
+    .mv-mission-img {
+      height: 535px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-mission-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -192,1065 +260,399 @@
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .gallery-row:hover img {
+    .mv-mission-img:hover img {
       transform: scale(1.02);
     }
 
-    .gallery-row.full {
-      height: 520px;
-    }
-
-    .gallery-two-col {
+    /* Row 2: Two images side by side */
+    .mv-row-two {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--gap);
+      gap: 10px;
+      width: 100%;
     }
 
-    .gallery-two-col .gallery-col {
-      height: 520px;
+    .mv-row-two-img {
+      height: 465px;
+      border-radius: 5px;
       overflow: hidden;
-      border-radius: var(--radius);
     }
 
-    .gallery-two-col .gallery-col img {
+    .mv-row-two-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .gallery-two-col .gallery-col:hover img {
+    .mv-row-two-img:hover img {
       transform: scale(1.02);
     }
 
-    /* --- 1. 3D BOX MOCKUP --- */
-    .box-mockup-section {
+    /* Row 3: Full width image */
+    .mv-row-full {
       width: 100%;
-      height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #111111;
-      border-radius: var(--radius);
+      border-radius: 5px;
       overflow: hidden;
-      perspective: 1200px;
     }
 
-    .box-3d {
-      width: 260px;
-      height: 260px;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateY(-25deg) rotateX(8deg);
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .box-mockup-section:hover .box-3d {
-      transform: rotateY(-40deg) rotateX(12deg);
-    }
-
-    .box-face {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.08);
-      backface-visibility: hidden;
-    }
-
-    .box-face-front {
-      background: #ffffff;
-      transform: translateZ(130px);
-    }
-
-    .box-face-right {
-      background: #e8e8e8;
-      transform: rotateY(90deg) translateZ(130px);
-    }
-
-    .box-face-top {
-      background: #f0f0f0;
-      transform: rotateX(90deg) translateZ(130px);
-    }
-
-    .box-face .box-logo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      width: 120px;
-      height: 120px;
-    }
-
-    .box-face .box-logo span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 28px;
-      font-weight: 700;
-      color: #161616;
-      line-height: 1;
-    }
-
-    .box-face-right .box-logo span {
-      color: #333;
-    }
-
-    .box-face-top .box-logo span {
-      color: #444;
-    }
-
-    .box-shadow {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      background: rgba(0,0,0,0.3);
-      filter: blur(40px);
-      transform: rotateX(90deg) translateZ(-140px) scale(0.8);
-    }
-
-    /* --- 2. TWO-COL PRODUCT SHOTS --- */
-    .product-shot {
-      position: relative;
+    .mv-row-full img {
       width: 100%;
-      height: 100%;
+      height: 739px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .product-shot img {
+    .mv-row-full:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Row 4: Image with logo overlay + text block */
+    .mv-row-logo-text {
+      display: grid;
+      grid-template-columns: 919fr 455fr;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .mv-logo-overlay {
+      position: relative;
+      height: 465px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mv-logo-overlay img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .product-shot.warm img {
-      filter: sepia(0.15) saturate(1.2) brightness(0.9);
+    .mv-logo-overlay:hover img {
+      transform: scale(1.02);
     }
 
-    .product-shot.cool img {
-      filter: saturate(0.6) brightness(0.85) contrast(1.1);
-    }
-
-    .product-shot:hover img {
-      transform: scale(1.03);
-    }
-
-    /* --- 3. LOGO SHOWCASE --- */
-    .logo-showcase {
-      width: 100%;
-      padding: 100px 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      background: #111111;
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .logo-showcase-row {
-      display: flex;
-      align-items: baseline;
-      gap: 40px;
-    }
-
-    .logo-showcase-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 8px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .logo-showcase-text.xl {
-      font-size: 96px;
-    }
-
-    .logo-showcase-text.lg {
-      font-size: 64px;
-      opacity: 0.6;
-    }
-
-    .logo-showcase-text.md {
-      font-size: 42px;
-      opacity: 0.4;
-    }
-
-    .logo-showcase-text.sm {
-      font-size: 24px;
-      opacity: 0.25;
-      letter-spacing: 12px;
-    }
-
-    .logo-showcase-text.light {
-      font-weight: 400;
-    }
-
-    /* --- 4. STATIONERY GRID --- */
-    .stationery-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: var(--gap);
-    }
-
-    .stationery-card {
-      height: 340px;
-      background: #1c1c1c;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .stationery-grid.visible .stationery-card {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stationery-grid.visible .stationery-card:nth-child(1) { transition-delay: 0s; }
-    .stationery-grid.visible .stationery-card:nth-child(2) { transition-delay: 0.08s; }
-    .stationery-grid.visible .stationery-card:nth-child(3) { transition-delay: 0.16s; }
-    .stationery-grid.visible .stationery-card:nth-child(4) { transition-delay: 0.24s; }
-
-    .stat-business-card {
-      width: 280px;
-      height: 160px;
-      background: #ffffff;
-      border-radius: 6px;
-      padding: 20px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-      transition: transform 0.4s ease;
-    }
-
-    .stationery-card:hover .stat-business-card {
-      transform: translateY(-4px) rotate(-1deg);
-    }
-
-    .stat-bc-logo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 44px;
-      height: 44px;
-    }
-
-    .stat-bc-logo span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 700;
-      color: #161616;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .stat-bc-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .stat-bc-info span {
-      font-family: 'Inter', sans-serif;
-      font-size: 8px;
-      color: #666;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .stat-bc-info span:first-child {
-      font-weight: 600;
-      color: #161616;
-      font-size: 9px;
-    }
-
-    .stat-bc-line {
-      width: 100%;
-      height: 1px;
-      background: #e0e0e0;
-      margin: 8px 0;
-    }
-
-    /* Back of card variant */
-    .stat-business-card.back {
-      background: #161616;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .stat-business-card.back .stat-bc-logo-big {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 80px;
-      height: 80px;
-    }
-
-    .stat-business-card.back .stat-bc-logo-big span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 18px;
-      font-weight: 700;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Letterhead variant */
-    .stat-letterhead {
-      width: 200px;
-      height: 260px;
-      background: #ffffff;
-      border-radius: 4px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-      transition: transform 0.4s ease;
-    }
-
-    .stationery-card:hover .stat-letterhead {
-      transform: translateY(-4px);
-    }
-
-    .stat-lh-lines {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 20px;
-    }
-
-    .stat-lh-line {
-      height: 2px;
-      background: #eee;
-      border-radius: 1px;
-    }
-
-    .stat-lh-line:nth-child(2) { width: 85%; }
-    .stat-lh-line:nth-child(3) { width: 70%; }
-    .stat-lh-line:nth-child(4) { width: 90%; }
-    .stat-lh-line:nth-child(5) { width: 60%; }
-
-    .stat-lh-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .stat-lh-footer span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 5px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* Envelope variant */
-    .stat-envelope {
-      width: 300px;
-      height: 180px;
-      background: #f5f5f5;
-      border-radius: 4px;
-      padding: 24px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-      transition: transform 0.4s ease;
-    }
-
-    .stationery-card:hover .stat-envelope {
-      transform: translateY(-4px) rotate(1deg);
-    }
-
-    .stat-env-flap {
+    .mv-logo-overlay-svg {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, #e8e8e8 0%, #f5f5f5 100%);
-      border-radius: 4px 4px 0 0;
-      clip-path: polygon(0 0, 100% 0, 50% 60%);
-      opacity: 0.5;
-    }
-
-    .stat-env-logo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 50px;
-      height: 50px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .stat-env-logo span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 700;
-      color: #161616;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* --- 5. LAPTOP MOCKUPS --- */
-    .laptop-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--gap);
-    }
-
-    .laptop-mockup {
-      height: 420px;
-      background: #1c1c1c;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 40px;
-    }
-
-    .laptop-frame {
-      width: 100%;
-      max-width: 400px;
-      position: relative;
-    }
-
-    .laptop-screen {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: #1a1a1a;
-      border-radius: 8px 8px 0 0;
-      border: 2px solid #333;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .laptop-screen-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .laptop-nav {
-      height: 24px;
-      background: #222;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      gap: 4px;
-    }
-
-    .laptop-nav-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #444;
-    }
-
-    .laptop-body-warm {
-      flex: 1;
-      background: linear-gradient(135deg, #2a1f1a 0%, #1a1210 50%, #261a12 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 20px;
-    }
-
-    .laptop-body-warm .site-logo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 40px;
-      height: 40px;
-    }
-
-    .laptop-body-warm .site-logo span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 700;
-      color: #d4a574;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .laptop-body-warm .site-lines {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      width: 60%;
-    }
-
-    .laptop-body-warm .site-line {
-      height: 2px;
-      background: rgba(212, 165, 116, 0.2);
-      border-radius: 1px;
-      width: 100%;
-    }
-
-    .laptop-body-warm .site-line:nth-child(2) { width: 70%; }
-    .laptop-body-warm .site-line:nth-child(3) { width: 85%; }
-
-    .laptop-body-dark {
-      flex: 1;
-      background: linear-gradient(135deg, #161616 0%, #1e1e1e 50%, #141414 100%);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 16px;
-    }
-
-    .laptop-body-dark .site-header-bar {
-      height: 20px;
-      background: #1a1a1a;
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 8px;
-    }
-
-    .laptop-body-dark .site-header-bar span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 5px;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .laptop-body-dark .site-grid {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-    }
-
-    .laptop-body-dark .site-grid-item {
-      background: #222;
-      border-radius: 3px;
-    }
-
-    .laptop-base {
-      width: 110%;
-      height: 10px;
-      background: linear-gradient(180deg, #444 0%, #333 100%);
-      border-radius: 0 0 4px 4px;
-      margin: 0 auto;
-      position: relative;
-      left: -5%;
-    }
-
-    .laptop-base::after {
-      content: '';
-      position: absolute;
-      top: 0;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: #555;
-      border-radius: 0 0 4px 4px;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
     }
 
-    /* --- 6. SOCIAL MEDIA GRID --- */
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--gap);
-    }
-
-    .social-card {
-      aspect-ratio: 1;
+    .mv-text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      padding: 50px 40px;
       background: #1c1c1c;
-      border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 30px;
-      transition: transform 0.4s ease, background 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
+      border-radius: 5px;
     }
 
-    .social-grid.visible .social-card {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .social-grid.visible .social-card:nth-child(1) { transition-delay: 0s; }
-    .social-grid.visible .social-card:nth-child(2) { transition-delay: 0.08s; }
-    .social-grid.visible .social-card:nth-child(3) { transition-delay: 0.16s; }
-
-    .social-card:hover {
-      background: #222;
-      transform: translateY(-4px);
-    }
-
-    .social-card-logo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 60px;
-      height: 60px;
-    }
-
-    .social-card-logo span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .social-card-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .social-card-lines {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      width: 70%;
-    }
-
-    .social-card-line {
-      height: 2px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 1px;
-    }
-
-    .social-card-line:nth-child(2) { width: 75%; }
-    .social-card-line:nth-child(3) { width: 55%; }
-
-    /* --- 7. TYPOGRAPHY SPECIMEN --- */
-    .typo-section {
-      width: 100%;
-      padding: 100px 60px;
-      background: #111111;
-      border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .typo-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding-bottom: 20px;
-    }
-
-    .typo-header-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .typo-header-brand {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: 4px;
-    }
-
-    .typo-row {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .typo-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .typo-sample-sans {
-      font-family: 'Inter', sans-serif;
-      font-size: 48px;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: -1px;
-      line-height: 1.1;
-    }
-
-    .typo-sample-mono {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 32px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 2px;
+    .mv-text-block-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 29px;
+      font-weight: 400;
+      color: #f1f1f1;
       line-height: 1.3;
     }
 
-    .typo-alphabet {
+    .mv-text-block-desc {
       font-family: 'Inter', sans-serif;
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 400;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 4px;
-      line-height: 1.8;
+      color: rgba(241, 241, 241, 0.6);
+      line-height: 1.7;
     }
 
-    .typo-weights {
+    /* Row 5: Centered box/packaging */
+    .mv-row-box {
+      width: 100%;
+      height: 660px;
       display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      background: #1c1c1c;
+      border-radius: 5px;
+      overflow: hidden;
     }
 
-    .typo-weight {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .mv-row-box img {
+      width: 608px;
+      height: 382px;
+      object-fit: contain;
     }
 
-    .typo-weight-name {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      color: var(--grey);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    /* Row 6: Full stationery image */
+    .mv-row-stationery {
+      width: 100%;
+      border-radius: 5px;
+      overflow: hidden;
     }
 
-    .typo-weight-sample {
-      font-family: 'Inter', sans-serif;
-      font-size: 28px;
-      color: #ffffff;
-      line-height: 1;
+    .mv-row-stationery img {
+      width: 100%;
+      height: 1649px;
+      object-fit: cover;
+      display: block;
     }
-
-    .typo-weight-sample.w400 { font-weight: 400; }
-    .typo-weight-sample.w500 { font-weight: 500; }
-    .typo-weight-sample.w600 { font-weight: 600; }
-    .typo-weight-sample.w700 { font-weight: 700; }
 
     /* --- NEXT PROJECT --- */
-    .next-project {
-      margin-top: 120px;
-      padding: 100px var(--side-padding);
+    .mv-next {
+      width: 100%;
+      height: 479px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      flex-direction: column;
       gap: 24px;
-      background: #111111;
+      margin-top: 60px;
+      cursor: pointer;
     }
 
-    .next-project-label {
-      font-family: var(--font-mono);
+    .mv-next-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mv-next:hover .mv-next-bg {
+      transform: scale(1.03);
+    }
+
+    .mv-next-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      pointer-events: none;
+    }
+
+    .mv-next-label {
+      position: relative;
+      z-index: 2;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       font-weight: 500;
-      color: var(--grey);
+      color: rgba(241, 241, 241, 0.5);
       text-transform: uppercase;
       letter-spacing: 2px;
     }
 
-    .next-project-star {
-      opacity: 0.4;
+    .mv-next-logo {
+      position: relative;
+      z-index: 2;
+      width: 120px;
+      height: auto;
     }
 
-    .next-project-name {
-      font-family: var(--font-sans);
-      font-size: 64px;
-      font-weight: 700;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 6px;
-      transition: opacity 0.4s ease, letter-spacing 0.4s ease;
+    .mv-next-name {
+      position: relative;
+      z-index: 2;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 43px;
+      font-weight: 400;
+      color: #f1f1f1;
+      letter-spacing: 1px;
+      transition: opacity 0.3s ease;
     }
 
-    .next-project-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .next-project-link:hover .next-project-name {
+    .mv-next:hover .mv-next-name {
       opacity: 0.7;
-      letter-spacing: 10px;
     }
 
     /* --- BOTTOM MENU --- */
-    .bottom-menu {
+    .mv-bottom-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
       z-index: 999;
-      background: var(--dark);
+      background: #363636;
       isolation: isolate;
+      padding: 15px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       transform: translateY(100%);
       opacity: 0;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
 
-    .bottom-menu.visible {
+    .mv-bottom-bar.visible {
       transform: translateY(0);
       opacity: 1;
     }
 
-    .bottom-menu-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 15px var(--side-padding);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .bottom-menu-left {
+    .mv-bar-left {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
 
-    .bottom-menu-left span {
-      font-family: var(--font-mono);
+    .mv-bar-left span {
+      font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      font-weight: 500;
-      color: var(--white);
-      text-transform: uppercase;
+      color: #fff;
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .bottom-menu-left span:last-child {
-      color: var(--grey);
-      font-weight: 400;
+    .mv-bar-left span:last-child {
+      color: #868686;
     }
 
-    .bm-links {
+    .mv-bar-center {
       display: flex;
       gap: 40px;
     }
 
-    .bm-link {
+    .mv-bar-center a {
       font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 500;
-      color: var(--grey);
+      color: #868686;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
       cursor: pointer;
-      text-decoration: none;
     }
 
-    .bm-link.active {
-      color: var(--white);
+    .mv-bar-center a.active {
+      color: #fff;
     }
 
-    .bm-link:hover {
-      color: var(--white);
+    .mv-bar-center a:hover {
+      color: #fff;
     }
 
-    .bm-follow {
+    .mv-bar-right a {
       font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 500;
-      color: var(--white);
+      color: #fff;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: opacity 0.3s ease;
       cursor: pointer;
-      text-decoration: none;
+      transition: opacity 0.3s;
     }
 
-    .bm-follow:hover {
+    .mv-bar-right a:hover {
       opacity: 0.7;
     }
 
     /* --- REVEAL ANIMATIONS --- */
-    .reveal-section {
+    .reveal {
       opacity: 0;
-      transform: translateY(60px);
+      transform: translateY(50px);
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                   transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .reveal-section.visible {
+    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .gallery-two-col .gallery-col {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .gallery-two-col.visible .gallery-col:nth-child(1) {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .gallery-two-col.visible .gallery-col:nth-child(2) {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.1s;
-    }
-
-    .parallax-wrap {
-      overflow: hidden;
-    }
-
-    .parallax-img {
-      transition: transform 0.1s linear;
-      will-change: transform;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* --- RESPONSIVE --- */
+    @media (max-width: 1200px) {
+      .mv-gallery {
+        max-width: calc(100% - 80px);
+      }
+      .mv-info {
+        max-width: calc(100% - 80px);
+      }
+    }
+
     @media (max-width: 1024px) {
-      .mv-hero-logo span { font-size: 48px; }
-      .mv-hero-logo { width: 160px; height: 160px; }
-      .project-info { padding: 60px var(--side-padding); gap: 40px; }
-      .project-info-title { font-size: 34px; }
-      .gallery-row.full { height: 400px; }
-      .gallery-two-col .gallery-col { height: 400px; }
-      .box-mockup-section { height: 400px; }
-      .box-3d { width: 200px; height: 200px; }
-      .box-face { width: 200px; height: 200px; }
-      .box-face-front { transform: translateZ(100px); }
-      .box-face-right { transform: rotateY(90deg) translateZ(100px); }
-      .box-face-top { transform: rotateX(90deg) translateZ(100px); }
-      .box-shadow { width: 200px; height: 200px; transform: rotateX(90deg) translateZ(-110px) scale(0.8); }
-      .logo-showcase-text.xl { font-size: 64px; }
-      .logo-showcase-text.lg { font-size: 42px; }
-      .logo-showcase-text.md { font-size: 28px; }
-      .logo-showcase-text.sm { font-size: 18px; }
-      .stationery-card { height: 280px; }
-      .laptop-mockup { height: 360px; padding: 30px; }
-      .typo-sample-sans { font-size: 36px; }
-      .typo-sample-mono { font-size: 24px; }
-      .next-project-name { font-size: 48px; }
+      .mv-hero { height: 700px; }
+      .mv-hero-bar { padding: 16px 40px; }
+      .mv-info { flex-direction: column; gap: 30px; }
+      .mv-info-right { align-items: flex-start; flex-direction: row; gap: 24px; flex-wrap: wrap; }
+      .mv-info-title { font-size: 36px; }
+      .mv-mission-img { height: 400px; }
+      .mv-row-two-img { height: 360px; }
+      .mv-row-full img { height: 500px; }
+      .mv-logo-overlay { height: 360px; }
+      .mv-row-box { height: 480px; }
+      .mv-row-box img { width: 400px; height: auto; }
+      .mv-row-stationery img { height: auto; }
+      .mv-next { height: 380px; }
     }
 
     @media (max-width: 768px) {
-      .cursor { display: none; }
+      .mv-hero { height: 550px; }
+      .mv-hero-logo { width: 140px; }
+      .mv-hero-bar { padding: 12px 24px; flex-wrap: wrap; gap: 8px; }
+      .mv-hero-bar-item { gap: 6px; }
+      .mv-hero-bar-label { font-size: 10px; }
+      .mv-hero-bar-value { font-size: 12px; }
 
-      .mv-hero { min-height: 500px; }
-      .mv-hero-logo span { font-size: 36px; }
-      .mv-hero-logo { width: 130px; height: 130px; }
+      .mv-gallery { max-width: calc(100% - 48px); }
+      .mv-info { max-width: calc(100% - 48px); }
 
-      .project-info {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 50px var(--side-padding);
-      }
-      .project-info-right {
-        align-items: flex-start;
-        flex-direction: row;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
+      .mv-row-mission { grid-template-columns: 1fr; }
+      .mv-mission-img { height: 300px; }
+      .mv-mission-text { padding: 30px 24px; }
 
-      .gallery-row.full { height: 280px; }
-      .gallery-two-col { grid-template-columns: 1fr; }
-      .gallery-two-col .gallery-col { height: 280px; }
+      .mv-row-two { grid-template-columns: 1fr; }
+      .mv-row-two-img { height: 280px; }
 
-      .box-mockup-section { height: 300px; }
-      .box-3d { width: 150px; height: 150px; }
-      .box-face { width: 150px; height: 150px; }
-      .box-face-front { transform: translateZ(75px); }
-      .box-face-right { transform: rotateY(90deg) translateZ(75px); }
-      .box-face-top { transform: rotateX(90deg) translateZ(75px); }
-      .box-shadow { width: 150px; height: 150px; transform: rotateX(90deg) translateZ(-85px) scale(0.8); }
-      .box-face .box-logo { width: 80px; height: 80px; }
-      .box-face .box-logo span { font-size: 18px; }
+      .mv-row-full img { height: 350px; }
 
-      .logo-showcase { padding: 60px 20px; gap: 24px; }
-      .logo-showcase-text.xl { font-size: 40px; letter-spacing: 4px; }
-      .logo-showcase-text.lg { font-size: 28px; letter-spacing: 4px; }
-      .logo-showcase-text.md { font-size: 20px; letter-spacing: 4px; }
-      .logo-showcase-text.sm { font-size: 14px; letter-spacing: 6px; }
+      .mv-row-logo-text { grid-template-columns: 1fr; }
+      .mv-logo-overlay { height: 280px; }
+      .mv-text-block { padding: 30px 24px; }
 
-      .stationery-grid { grid-template-columns: 1fr; }
-      .stationery-card { height: 260px; }
+      .mv-row-box { height: 340px; }
+      .mv-row-box img { width: 300px; height: auto; }
 
-      .laptop-grid { grid-template-columns: 1fr; }
-      .laptop-mockup { height: 320px; }
+      .mv-row-stationery img { height: auto; }
 
-      .social-grid { grid-template-columns: 1fr; }
+      .mv-next { height: 300px; margin-top: 40px; }
+      .mv-next-name { font-size: 32px; }
 
-      .typo-section { padding: 60px 30px; }
-      .typo-sample-sans { font-size: 28px; }
-      .typo-sample-mono { font-size: 20px; }
-      .typo-alphabet { font-size: 14px; letter-spacing: 2px; }
-      .typo-weights { gap: 20px; }
-      .typo-weight-sample { font-size: 22px; }
-
-      .next-project-name { font-size: 32px; letter-spacing: 4px; }
-      .next-project { padding: 60px var(--side-padding); margin-top: 60px; }
-
-      .bottom-menu-left { display: none; }
-      .bm-follow { display: none; }
-      .bottom-menu-inner { justify-content: center; }
-      .bm-links { gap: 16px; }
-
-      .bm-link, .bm-follow, .next-project-link {
-        cursor: pointer;
-      }
+      .mv-bar-left { display: none; }
+      .mv-bar-right { display: none; }
+      .mv-bottom-bar { justify-content: center; padding: 15px 24px; }
+      .mv-bar-center { gap: 20px; }
     }
 
     @media (max-width: 480px) {
-      .mv-hero-logo span { font-size: 28px; }
-      .mv-hero-logo { width: 100px; height: 100px; }
-      .gallery-row.full { height: 200px; }
-      .gallery-two-col .gallery-col { height: 200px; }
-      .box-mockup-section { height: 240px; }
-      .box-3d { width: 110px; height: 110px; }
-      .box-face { width: 110px; height: 110px; }
-      .box-face-front { transform: translateZ(55px); }
-      .box-face-right { transform: rotateY(90deg) translateZ(55px); }
-      .box-face-top { transform: rotateX(90deg) translateZ(55px); }
-      .box-shadow { width: 110px; height: 110px; transform: rotateX(90deg) translateZ(-65px) scale(0.8); }
-      .box-face .box-logo { width: 56px; height: 56px; }
-      .box-face .box-logo span { font-size: 12px; }
-      .logo-showcase-text.xl { font-size: 28px; }
-      .logo-showcase-text.lg { font-size: 20px; }
-      .stationery-card { height: 220px; }
-      .stat-business-card { width: 220px; height: 130px; padding: 14px 18px; }
-      .stat-letterhead { width: 160px; height: 210px; padding: 14px; }
-      .stat-envelope { width: 240px; height: 150px; }
-      .next-project-name { font-size: 24px; }
-      .typo-sample-sans { font-size: 22px; }
-      .typo-sample-mono { font-size: 16px; }
+      .mv-hero { height: 450px; }
+      .mv-hero-logo { width: 110px; }
+      .mv-hero-bar { flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px 16px; }
+      .mv-info-title { font-size: 30px; }
+      .mv-gallery { max-width: calc(100% - 32px); }
+      .mv-info { max-width: calc(100% - 32px); }
+      .mv-mission-img { height: 220px; }
+      .mv-row-two-img { height: 220px; }
+      .mv-row-full img { height: 250px; }
+      .mv-logo-overlay { height: 220px; }
+      .mv-row-box { height: 280px; }
+      .mv-row-box img { width: 240px; }
+      .mv-next { height: 240px; }
+      .mv-next-name { font-size: 26px; }
+      .mv-next-logo { width: 80px; }
     }
   </style>
 </head>
@@ -1288,338 +690,133 @@
   <section class="mv-hero">
     <div class="mv-hero-bg"></div>
     <div class="mv-hero-overlay"></div>
-    <div class="mv-hero-logo">
-      <span>M</span>
-      <span>V</span>
-      <span>K</span>
-      <span>A</span>
+    <img class="mv-hero-logo" src="assets/mv-logo-white.svg" alt="MVKA Logo">
+
+    <!-- Hero bottom bar -->
+    <div class="mv-hero-bar">
+      <div class="mv-hero-bar-item">
+        <span class="mv-hero-bar-label">TYPE</span>
+        <span class="mv-hero-bar-value">Freelance</span>
+      </div>
+      <div class="mv-hero-bar-item">
+        <span class="mv-hero-bar-label">EXPERTISE</span>
+        <span class="mv-hero-bar-value">Branding, Web Design</span>
+      </div>
+      <div class="mv-hero-bar-item">
+        <span class="mv-hero-bar-label">DATE</span>
+        <span class="mv-hero-bar-value">01.21 - 02.21</span>
+      </div>
     </div>
   </section>
 
-  <!-- PROJECT INFO -->
-  <section class="project-info reveal-section">
-    <div class="project-info-left">
-      <span class="project-info-label">Freelance</span>
-      <h1 class="project-info-title">Monkey Vape</h1>
-      <span class="project-info-date">3 mois / 2021</span>
-      <p class="project-info-desc">
-        Monkey Vape aimed to assert a modern, innovative brand image by drawing inspiration from current trends, focusing it charge on a new product and transform a vaping experience.
-      </p>
-    </div>
-    <div class="project-info-right">
-      <span class="project-meta-item">Paris</span>
-      <span class="project-meta-item">Freelance</span>
-      <span class="project-meta-item">01/01/2021</span>
-    </div>
-  </section>
+  <!-- MAIN CONTENT -->
+  <div class="mv-content">
 
-  <!-- GALLERY -->
-  <div class="gallery">
+    <!-- TITLE + INFO -->
+    <section class="mv-info reveal">
+      <div class="mv-info-left">
+        <h1 class="mv-info-title">Monkey Vape</h1>
+        <span class="mv-info-credits">/ VIEW CREDITS</span>
+        <p class="mv-info-desc">
+          Monkey Vape aimed to assert a modern, innovative brand image by drawing inspiration from current trends, focusing its charge on a new product and transforming the vaping experience with a bold visual identity.
+        </p>
+      </div>
+      <div class="mv-info-right">
+        <span class="mv-info-meta">/ TAG: <strong>New Atmosph&egrave;re</strong></span>
+        <span class="mv-info-meta">/ CLIENT: <strong>Sandwich Design</strong></span>
+      </div>
+    </section>
 
-    <!-- 1. Full-width: 3D Box Mockup -->
-    <div class="box-mockup-section reveal-section" id="boxMockup">
-      <div class="box-3d">
-        <div class="box-shadow"></div>
-        <div class="box-face box-face-front">
-          <div class="box-logo">
-            <span>M</span><span>V</span><span>K</span><span>A</span>
-          </div>
-        </div>
-        <div class="box-face box-face-right">
-          <div class="box-logo">
-            <span>M</span><span>V</span><span>K</span><span>A</span>
-          </div>
-        </div>
-        <div class="box-face box-face-top">
-          <div class="box-logo">
-            <span>M</span><span>V</span><span>K</span><span>A</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- GALLERY -->
+    <div class="mv-gallery">
 
-    <!-- 2. Two-column: Product shots -->
-    <div class="gallery-two-col reveal-section">
-      <div class="gallery-col parallax-wrap">
-        <div class="product-shot warm">
-          <img src="assets/project-allowa-bg.jpg" alt="Monkey Vape product close-up warm" class="parallax-img" loading="lazy" width="680" height="520" style="object-position: center 30%;">
+      <!-- Row 1: Mission text + image -->
+      <div class="mv-row-mission reveal">
+        <div class="mv-mission-text">
+          <span class="mv-mission-label">/ MISSION</span>
+          <p class="mv-mission-desc">
+            Create a complete brand identity for Monkey Vape, including logo design, packaging, brand guidelines, and a web presence that captures the energy and innovation of the vaping community with a fresh, modern aesthetic.
+          </p>
+        </div>
+        <div class="mv-mission-img">
+          <img src="assets/mv-gallery1.jpg" alt="Monkey Vape brand imagery" loading="lazy" width="692" height="535">
         </div>
       </div>
-      <div class="gallery-col parallax-wrap">
-        <div class="product-shot cool">
-          <img src="assets/project-allowa-bg.jpg" alt="Monkey Vape product close-up cool" class="parallax-img" loading="lazy" width="680" height="520" style="object-position: center 60%;">
-        </div>
-      </div>
-    </div>
 
-    <!-- 3. Full-width: Logo showcase -->
-    <div class="logo-showcase reveal-section">
-      <div class="logo-showcase-row">
-        <span class="logo-showcase-text xl">MV KA</span>
+      <!-- Row 2: Two images -->
+      <div class="mv-row-two reveal">
+        <div class="mv-row-two-img">
+          <img src="assets/mv-gallery2.jpg" alt="Monkey Vape product shot" loading="lazy" width="687" height="465">
+        </div>
+        <div class="mv-row-two-img">
+          <img src="assets/mv-gallery3.jpg" alt="Monkey Vape branding detail" loading="lazy" width="687" height="465">
+        </div>
       </div>
-      <div class="logo-showcase-row">
-        <span class="logo-showcase-text lg">MV KA</span>
-        <span class="logo-showcase-text lg light">MV KA</span>
-      </div>
-      <div class="logo-showcase-row">
-        <span class="logo-showcase-text md">MONKEY VAPE</span>
-      </div>
-      <div class="logo-showcase-row">
-        <span class="logo-showcase-text sm">MV KA &mdash; MONKEY VAPE &mdash; MV KA</span>
-      </div>
-    </div>
 
-    <!-- 4. Grid (2x2): Business cards & stationery -->
-    <div class="stationery-grid reveal-section" id="stationeryGrid">
-      <!-- Card front -->
-      <div class="stationery-card">
-        <div class="stat-business-card">
-          <div class="stat-bc-logo">
-            <span>M</span><span>V</span><span>K</span><span>A</span>
-          </div>
-          <div>
-            <div class="stat-bc-line"></div>
-            <div class="stat-bc-info">
-              <span>Monkey Vape</span>
-              <span>hello@monkeyvape.fr</span>
-              <span>+33 1 23 45 67 89</span>
-            </div>
-          </div>
+      <!-- Row 3: Full width image -->
+      <div class="mv-row-full reveal">
+        <img src="assets/mv-gallery4.jpg" alt="Monkey Vape full brand spread" loading="lazy" width="1384" height="739">
+      </div>
+
+      <!-- Row 4: Image with logo overlay + text -->
+      <div class="mv-row-logo-text reveal">
+        <div class="mv-logo-overlay">
+          <img src="assets/mv-gallery5.jpg" alt="Monkey Vape brand application" loading="lazy" width="919" height="465">
+          <img class="mv-logo-overlay-svg" src="assets/mv-logo-small.svg" alt="MVKA logo">
+        </div>
+        <div class="mv-text-block">
+          <span class="mv-mission-label">/ IDENTITY</span>
+          <h3 class="mv-text-block-title">A visual system built around bold geometry and clean contrast</h3>
+          <p class="mv-text-block-desc">
+            The MVKA identity brings together sharp typographic choices with a modular logo that works across all touchpoints, from packaging to digital platforms, creating an instantly recognizable brand presence.
+          </p>
         </div>
       </div>
-      <!-- Card back -->
-      <div class="stationery-card">
-        <div class="stat-business-card back">
-          <div class="stat-bc-logo-big">
-            <span>M</span><span>V</span><span>K</span><span>A</span>
-          </div>
-        </div>
+
+      <!-- Row 5: Centered 3D box/packaging -->
+      <div class="mv-row-box reveal">
+        <img src="assets/mv-box.png" alt="Monkey Vape packaging box mockup" loading="lazy" width="608" height="382">
       </div>
-      <!-- Letterhead -->
-      <div class="stationery-card">
-        <div class="stat-letterhead">
-          <div class="stat-bc-logo">
-            <span>M</span><span>V</span><span>K</span><span>A</span>
-          </div>
-          <div class="stat-lh-lines">
-            <div class="stat-lh-line"></div>
-            <div class="stat-lh-line"></div>
-            <div class="stat-lh-line"></div>
-            <div class="stat-lh-line"></div>
-            <div class="stat-lh-line"></div>
-          </div>
-          <div class="stat-lh-footer">
-            <span>Monkey Vape</span>
-            <span>Paris, France</span>
-          </div>
-        </div>
+
+      <!-- Row 6: Full stationery/collateral image -->
+      <div class="mv-row-stationery reveal">
+        <img src="assets/mv-stationery.jpg" alt="Monkey Vape brand stationery and collateral" loading="lazy" width="1384" height="1649">
       </div>
-      <!-- Envelope -->
-      <div class="stationery-card">
-        <div class="stat-envelope">
-          <div class="stat-env-flap"></div>
-          <div class="stat-env-logo">
-            <span>M</span><span>V</span><span>K</span><span>A</span>
-          </div>
-        </div>
-      </div>
+
     </div>
 
-    <!-- 5. Two-column: Laptop mockups -->
-    <div class="laptop-grid reveal-section">
-      <div class="laptop-mockup">
-        <div class="laptop-frame">
-          <div class="laptop-screen">
-            <div class="laptop-screen-content">
-              <div class="laptop-nav">
-                <div class="laptop-nav-dot"></div>
-                <div class="laptop-nav-dot"></div>
-                <div class="laptop-nav-dot"></div>
-              </div>
-              <div class="laptop-body-warm">
-                <div class="site-logo">
-                  <span>M</span><span>V</span><span>K</span><span>A</span>
-                </div>
-                <div class="site-lines">
-                  <div class="site-line"></div>
-                  <div class="site-line"></div>
-                  <div class="site-line"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="laptop-base"></div>
-        </div>
-      </div>
-      <div class="laptop-mockup">
-        <div class="laptop-frame">
-          <div class="laptop-screen">
-            <div class="laptop-screen-content">
-              <div class="laptop-nav">
-                <div class="laptop-nav-dot"></div>
-                <div class="laptop-nav-dot"></div>
-                <div class="laptop-nav-dot"></div>
-              </div>
-              <div class="laptop-body-dark">
-                <div class="site-header-bar">
-                  <span>MVKA</span>
-                  <span>Shop</span>
-                </div>
-                <div class="site-grid">
-                  <div class="site-grid-item"></div>
-                  <div class="site-grid-item"></div>
-                  <div class="site-grid-item"></div>
-                  <div class="site-grid-item"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="laptop-base"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. Full-width: Social media grid -->
-    <div class="social-grid reveal-section" id="socialGrid">
-      <div class="social-card">
-        <div class="social-card-logo">
-          <span>M</span><span>V</span><span>K</span><span>A</span>
-        </div>
-        <span class="social-card-label">Instagram Post</span>
-        <div class="social-card-lines">
-          <div class="social-card-line"></div>
-          <div class="social-card-line"></div>
-          <div class="social-card-line"></div>
-        </div>
-      </div>
-      <div class="social-card">
-        <div class="social-card-logo">
-          <span>M</span><span>V</span><span>K</span><span>A</span>
-        </div>
-        <span class="social-card-label">Story</span>
-        <div class="social-card-lines">
-          <div class="social-card-line"></div>
-          <div class="social-card-line"></div>
-          <div class="social-card-line"></div>
-        </div>
-      </div>
-      <div class="social-card">
-        <div class="social-card-logo">
-          <span>M</span><span>V</span><span>K</span><span>A</span>
-        </div>
-        <span class="social-card-label">Banner</span>
-        <div class="social-card-lines">
-          <div class="social-card-line"></div>
-          <div class="social-card-line"></div>
-          <div class="social-card-line"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. Full-width: Brand typography specimen -->
-    <div class="typo-section reveal-section">
-      <div class="typo-header">
-        <span class="typo-header-label">Brand Typography</span>
-        <span class="typo-header-brand">MV KA</span>
-      </div>
-      <div class="typo-row">
-        <span class="typo-label">Primary &mdash; Inter</span>
-        <span class="typo-sample-sans">The quick brown fox jumps over the lazy dog</span>
-      </div>
-      <div class="typo-row">
-        <span class="typo-label">Monospace &mdash; JetBrains Mono</span>
-        <span class="typo-sample-mono">MVKA &mdash; Monkey Vape 2021</span>
-      </div>
-      <div class="typo-row">
-        <span class="typo-label">Character Set</span>
-        <span class="typo-alphabet">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span>
-        <span class="typo-alphabet">a b c d e f g h i j k l m n o p q r s t u v w x y z</span>
-        <span class="typo-alphabet">0 1 2 3 4 5 6 7 8 9</span>
-      </div>
-      <div class="typo-row">
-        <span class="typo-label">Weights</span>
-        <div class="typo-weights">
-          <div class="typo-weight">
-            <span class="typo-weight-name">Regular 400</span>
-            <span class="typo-weight-sample w400">Aa</span>
-          </div>
-          <div class="typo-weight">
-            <span class="typo-weight-name">Medium 500</span>
-            <span class="typo-weight-sample w500">Aa</span>
-          </div>
-          <div class="typo-weight">
-            <span class="typo-weight-name">Semibold 600</span>
-            <span class="typo-weight-sample w600">Aa</span>
-          </div>
-          <div class="typo-weight">
-            <span class="typo-weight-name">Bold 700</span>
-            <span class="typo-weight-sample w700">Aa</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- NEXT PROJECT -->
+    <a href="work-dina-summer.html" class="mv-next reveal" style="text-decoration:none;">
+      <div class="mv-next-bg" style="background-image: url('assets/mv-next-bg.jpg');"></div>
+      <div class="mv-next-overlay"></div>
+      <span class="mv-next-label">Next project</span>
+      <img class="mv-next-logo" src="assets/mv-next-logo.svg" alt="Dina Summer logo">
+      <span class="mv-next-name">Dina Summer</span>
+    </a>
 
   </div>
 
-  <!-- NEXT PROJECT -->
-  <section class="next-project reveal-section">
-    <span class="next-project-label">Next Project</span>
-    <svg class="next-project-star" width="24" height="24" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15 0L17.6 10.2L26.9 3.1L20.8 13L30 15L20.8 17L26.9 26.9L17.6 19.8L15 30L12.4 19.8L3.1 26.9L9.2 17L0 15L9.2 13L3.1 3.1L12.4 10.2L15 0Z" fill="white"/>
-    </svg>
-    <a href="work-dina-summer.html" class="next-project-link">
-      <span class="next-project-name">Dina Summer</span>
-    </a>
-  </section>
-
   <!-- BOTTOM MENU -->
-  <nav class="bottom-menu" id="bottomMenu">
-    <div class="bottom-menu-inner">
-      <div class="bottom-menu-left">
-        <span>MONKEY VAPE</span>
-        <span>PROJECT : [08]</span>
-      </div>
-      <div class="bm-links">
-        <a href="index.html" class="bm-link">ABOUT</a>
-        <a href="work.html" class="bm-link active">WORK</a>
-        <a href="playground.html" class="bm-link">PLAYGROUND</a>
-        <a href="contact.html" class="bm-link">CONTACT</a>
-      </div>
-      <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener" class="bm-follow">FOLLOW ME &#x2197;</a>
+  <nav class="mv-bottom-bar" id="bottomBar">
+    <div class="mv-bar-left">
+      <span>MONKEY VAPE</span>
+      <span>PROJECT : [08]</span>
+    </div>
+    <div class="mv-bar-center">
+      <a href="index.html">ABOUT</a>
+      <a href="work.html" class="active">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div class="mv-bar-right">
+      <a href="https://linktr.ee/elone_design" target="_blank" rel="noopener">FOLLOW ME &#x2197;</a>
     </div>
   </nav>
 
   <script>
     /* === MONKEY VAPE PAGE SCRIPTS === */
 
-    // --- Custom Cursor ---
-    const cursor = document.getElementById('cursor');
-    let cursorX = 0, cursorY = 0;
-    let dotX = 0, dotY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      cursorX = e.clientX;
-      cursorY = e.clientY;
-    });
-
-    function animateCursor() {
-      dotX += (cursorX - dotX) * 0.15;
-      dotY += (cursorY - dotY) * 0.15;
-      if (cursor) {
-        cursor.style.transform = `translate(${dotX}px, ${dotY}px)`;
-      }
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // Hover states for interactive elements
-    const hoverTargets = document.querySelectorAll('a, .gallery-row, .gallery-col, .next-project-link, .box-mockup-section, .stationery-card, .social-card, .laptop-mockup');
-    hoverTargets.forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
-
-    // --- Header scroll behaviour ---
+    // --- Header scroll ---
     const header = document.getElementById('header');
     let lastScrollY = 0;
 
@@ -1633,19 +830,19 @@
       lastScrollY = sy;
     }
 
-    // --- Bottom menu visibility ---
-    const bottomMenu = document.getElementById('bottomMenu');
+    // --- Bottom bar visibility ---
+    const bottomBar = document.getElementById('bottomBar');
 
-    function handleBottomMenu() {
+    function handleBottomBar() {
       if (window.scrollY > 400) {
-        bottomMenu.classList.add('visible');
+        bottomBar.classList.add('visible');
       } else {
-        bottomMenu.classList.remove('visible');
+        bottomBar.classList.remove('visible');
       }
     }
 
     // --- Scroll reveal (IntersectionObserver) ---
-    const revealSections = document.querySelectorAll('.reveal-section');
+    const revealEls = document.querySelectorAll('.reveal');
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1654,49 +851,16 @@
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -60px 0px'
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
     });
 
-    revealSections.forEach(section => revealObserver.observe(section));
-
-    // --- Parallax on scroll ---
-    const parallaxElements = document.querySelectorAll('.parallax-img');
-
-    function handleParallax() {
-      const scrollY = window.scrollY;
-      const windowH = window.innerHeight;
-
-      parallaxElements.forEach(img => {
-        const parent = img.closest('.parallax-wrap') || img.parentElement;
-        const rect = parent.getBoundingClientRect();
-        const parentCenter = rect.top + rect.height / 2;
-        const offset = (parentCenter - windowH / 2) * 0.06;
-        img.style.transform = `translateY(${offset}px) scale(1.05)`;
-      });
-    }
-
-    // --- 3D Box scroll rotation ---
-    const boxMockup = document.getElementById('boxMockup');
-    const box3d = boxMockup ? boxMockup.querySelector('.box-3d') : null;
-
-    function handleBoxRotation() {
-      if (!boxMockup || !box3d) return;
-      const rect = boxMockup.getBoundingClientRect();
-      const windowH = window.innerHeight;
-      const progress = 1 - (rect.top + rect.height) / (windowH + rect.height);
-      const clampedProgress = Math.max(0, Math.min(1, progress));
-      const rotateY = -25 + clampedProgress * -30;
-      const rotateX = 8 + clampedProgress * 8;
-      box3d.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-    }
+    revealEls.forEach(el => revealObserver.observe(el));
 
     // --- Unified scroll handler ---
     function onScroll() {
       handleHeaderScroll();
-      handleBottomMenu();
-      handleParallax();
-      handleBoxRotation();
+      handleBottomBar();
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
